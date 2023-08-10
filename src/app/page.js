@@ -1,4 +1,8 @@
 "use client";
+import { PostOwner } from "@/components/PostOwner";
+import { Comment } from "@/components/Comment";
+import { comments } from "@/libs/comments";
+import { Reply } from "@/components/Reply";
 
 export default function HomePage() {
   return (
@@ -15,13 +19,15 @@ export default function HomePage() {
         <div className="vstack gap-3">
           <div className="d-flex align-items-center gap-3">
             <img
-              src="/profileImages/handsome.jpg"
+              src="/profileImages/phai.jpg"
               width="48"
               height="48"
               className="rounded-circle"
               style={{ objectFit: "cover" }}
             />
-            <span className="fw-semibold fs-5">Chayanin Suatap 650610560</span>
+            <span className="fw-semibold fs-5">
+              Norapat Chindasoon 650610774
+            </span>
           </div>
 
           <span>Quiz ง่ายจังเลยครับ ขอยาก ๆ กว่านี้ได้ไหม #261207</span>
@@ -57,6 +63,7 @@ export default function HomePage() {
         </div>
 
         {/* Reply Example */}
+
         <div className="d-flex gap-2 my-2 ps-5">
           <img
             src="/profileImages/puppy.jpg"
@@ -80,6 +87,16 @@ export default function HomePage() {
         </div>
 
         {/* map-loop render Comment component here */}
+        {comments.map((com) => (
+          <Comment
+            key={com.userImagePath}
+            userImagePath={com.userImagePath}
+            username={com.username}
+            commentText={com.commentText}
+            likeNum={com.likeNum}
+            replies={com.replies}
+          />
+        ))}
       </div>
     </div>
   );
